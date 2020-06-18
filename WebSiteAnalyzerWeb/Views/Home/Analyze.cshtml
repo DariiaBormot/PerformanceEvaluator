@@ -1,0 +1,74 @@
+﻿@model WebSiteAnalyzerWeb.Models.WebSiteViewModel
+
+@using (Html.BeginForm("Index", "Home"))
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Url, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Url, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Url)
+
+            <hr />
+
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Path
+        </th>
+        <th>
+            Min Response Time
+        </th>
+        <th>
+            Max Response Time
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+
+        foreach (var item in Model.Pages)
+
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Path)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinResponseTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxResponseTime)
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>
+
+@using (Html.BeginForm("History", "Home"))
+{
+    <div class="form-group">
+        <label for="Input">History</label>
+        <div class="input-group">
+
+            @Html.TextBoxFor(m => m.Url)
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+}
+
+
+
