@@ -24,19 +24,23 @@
 <table class="table">
     <tr>
         <th>
-            Path
+            Page
         </th>
         <th>
-            Min Response Time
+            Page Response Time
         </th>
         <th>
             Max Response Time
         </th>
-        <th></th>
+        <th>
+            Min Response Time
+        </th>
+
     </tr>
 
     @if (Model != null)
     {
+
 
         foreach (var item in Model.Pages)
 
@@ -46,29 +50,29 @@
                     @Html.DisplayFor(modelItem => item.Path)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MinResponseTime)
+                    @Html.DisplayFor(modelItem => item.ResponseTime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MaxResponseTime)
+                    @Html.DisplayFor(x => Model.MaxResponseTime)
                 </td>
-
+                <td>
+                    @Html.DisplayFor(x => Model.MinResponseTime)
+                </td>
             </tr>
         }
+
     }
 
 </table>
 
-@using (Html.BeginForm("History", "Home"))
+@if (Model != null)
 {
-    <div class="form-group">
-        <label for="Input">History</label>
-        <div class="input-group">
 
-            @Html.TextBoxFor(m => m.Url)
-            <input type="submit" value="Submit" />
-        </div>
-    </div>
+    @Html.ActionLink("Get History", "History", "Home", new { url = Model.Url }, null) 
+
 }
+
+
 
 
 

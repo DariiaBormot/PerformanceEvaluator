@@ -11,5 +11,7 @@ namespace SiteAnalyzerBL.Interfaces
     {
         SiteBL GetSiteByUrl(string url);
         SiteBL Create(SiteBL site);
+        void Update(SiteBL site);
+        SiteBL SaveSite(IEnumerable<PageBL> pages, SiteBL siteModel);
     }
 }

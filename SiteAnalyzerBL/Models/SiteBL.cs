@@ -11,10 +11,14 @@ namespace SiteAnalyzerBL.Models
         public SiteBL()
         {
             Pages = new List<PageBL>();
+            Histories = new List<HistoryBL>();
         }
         public int Id { get; set; }
         public string Url { get; set; }
+        public int MinResponseTime { get; set; }
+        public int MaxResponseTime { get; set; }
 
-        public IEnumerable<PageBL> Pages { get; set; }
+        public virtual ICollection<PageBL> Pages { get; set; }
+        public virtual ICollection<HistoryBL> Histories { get; set; }
     }
 }

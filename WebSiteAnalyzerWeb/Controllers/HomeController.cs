@@ -5,6 +5,8 @@ using AutoMapper;
 using SiteAnalyzerBL.Models;
 using Antlr.Runtime.Misc;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace WebSiteAnalyzerWeb.Controllers
 {
@@ -15,17 +17,17 @@ namespace WebSiteAnalyzerWeb.Controllers
         private readonly ISiteSerivice _siteSerivice;
         private readonly IRequestService _requestService;
         private readonly IMapper _mapper;
-        private readonly IPageService _pageService;
-        public HomeController(ICrawlerService crawlerService, 
-            ISitemapService sitemapService, IRequestService requestService, 
-            ISiteSerivice siteService, IMapper mapper, IPageService pageService)
+        private readonly IHistoryService _historyService;
+        public HomeController(ICrawlerService crawlerService,
+            ISitemapService sitemapService, IRequestService requestService,
+            ISiteSerivice siteService, IMapper mapper, IHistoryService historyService)
         {
             _crawlerService = crawlerService;
             _sitemapService = sitemapService;
             _siteSerivice = siteService;
             _requestService = requestService;
             _mapper = mapper;
-            _pageService = pageService;
+            _historyService = historyService;
         }
 
         [HttpGet]
@@ -37,45 +39,33 @@ namespace WebSiteAnalyzerWeb.Controllers
         [HttpPost]
         public ActionResult Index(WebSiteViewModel model)
         {
-            var linkds = _crawlerService.GetPageLinks(model.Url);
+            var links = _crawlerService.GetPageLinks(model.Url);
 
-            var sitemap = _sitemapService.GetPages(linkds, model.Url);
+            var sitemap = _sitemapService.GetPages(links, model.Url);
 
-            var measuredPaged = _requestService.MeasureResponseTime(sitemap);
+            var measuredPages = _requestService.MeasureResponseTime(sitemap);
 
-            var siteModel = _mapper.Map<SiteBL>(model);
+            var siteModelBL = _mapper.Map<SiteBL>(model);
 
-            var site = _siteSerivice.Create(siteModel);
+            var site = _siteSerivice.SaveSite(measuredPages, siteModelBL);
 
-            _pageService.SavePagesToDB(measuredPaged, site.Id);
+            _historyService.CreateHistory(site);
 
-            var orderedResponces = measuredPaged.OrderByDescending(x => x.MinResponseTime);
+            var sitePL = _mapper.Map<WebSiteViewModel>(site);
 
-            site.Pages = orderedResponces;
-
-            //var siteBL = _siteSerivice.GetSiteByUrl(siteModel.Url);
-
-            //var sitePL = _mapper.Map<WebSiteViewModel>(siteBL);
-
-
-            return View(site);
+            return View(sitePL); 
         }
 
         [HttpGet]
-        public ActionResult GetHistory()
+        public ActionResult History(string url)
         {
-            return View();
-        }
+            var history = _historyService.GetHistory(url);
 
-        [HttpPost]
-        public ActionResult GetHistory(string url)
-        {
-            var history = _siteSerivice.GetSiteByUrl(url);
-
-            var historyPL = _mapper.Map<WebSiteViewModel>(history);
+            var historyPL = _mapper.Map<IEnumerable<HistoryViewModel>>(history);
 
             return View(historyPL);
         }
+
 
     }
 }

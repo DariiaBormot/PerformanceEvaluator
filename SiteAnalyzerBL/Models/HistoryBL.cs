@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace SiteAnalyzerBL.Models
 {
-    public class PageBL
+    public class HistoryBL
     {
         public int Id { get; set; }
-        public string Path { get; set; }
-        public int ResponseTime { get; set; }
+        public int MinResponseTime { get; set; }
+        public int MaxResponseTime { get; set; }
+        public DateTime Date { get; set; }
+        public string SiteURL { get; set; }
 
-        public int SiteId { get; set; }
         public virtual SiteBL Site { get; set; }
+        public int SiteId { get; set; }
     }
 }

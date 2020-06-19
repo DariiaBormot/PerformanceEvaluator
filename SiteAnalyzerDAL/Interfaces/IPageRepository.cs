@@ -11,5 +11,8 @@ namespace SiteAnalyzerDAL.Interfaces
     {
         IEnumerable<Page> GetPages();
         void Create(Page page);
+        int GetSlowestResponceTime(int siteId);
+        int GetFastestResponceTime(int siteId);
+
     }
 }

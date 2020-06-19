@@ -30,18 +30,16 @@ namespace SiteAnalyzerBL.Services
             {
 
                 Stopwatch stopWatch = new Stopwatch();
-                //var document = new HtmlDocument();
 
                 stopWatch.Start();
 
                 HttpWebRequest reqest = (HttpWebRequest)WebRequest.Create(page.Path);
+
                 HttpWebResponse responce = (HttpWebResponse)reqest.GetResponse();
-                //document.Load(responce.GetResponseStream());
 
                 stopWatch.Stop();
 
-                page.MaxResponseTime = stopWatch.Elapsed.Milliseconds;
-                page.MinResponseTime = stopWatch.Elapsed.Milliseconds;
+                page.ResponseTime = stopWatch.Elapsed.Milliseconds;
 
                 return page;
 

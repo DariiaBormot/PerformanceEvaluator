@@ -14,5 +14,6 @@ namespace SiteAnalyzerDAL
         { }
         public DbSet<Site> Sites { get; set; }
         public DbSet<Page> Pages { get; set; }
+        public DbSet<History> Histories { get; set; }
     }
 }

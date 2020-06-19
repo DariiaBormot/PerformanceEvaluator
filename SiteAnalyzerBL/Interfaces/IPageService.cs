@@ -11,6 +11,7 @@ namespace SiteAnalyzerBL.Interfaces
     {
         IEnumerable<PageBL> GetPages();
         void Create(PageBL page);
-        void SavePagesToDB(IEnumerable<PageBL> pages, int siteId);
+        int GetFastestResponceTime(int siteId);
+        int GetSlowestResponceTime(int siteId); 
     }
 }

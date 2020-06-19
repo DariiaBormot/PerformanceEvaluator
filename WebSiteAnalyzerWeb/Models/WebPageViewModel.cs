@@ -8,7 +8,7 @@ namespace WebSiteAnalyzerWeb.Models
     public class WebPageViewModel
     {
         public string Path { get; set; }
-        public int MinResponseTime { get; set; }
-        public int MaxResponseTime { get; set; }
+        public int ResponseTime { get; set; }
+
     }
 }

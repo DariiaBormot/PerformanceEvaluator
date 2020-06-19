@@ -63,14 +63,17 @@
     <Compile Include="Config\AutofacConfigBL.cs" />
     <Compile Include="Config\AutoMapperProfileBL.cs" />
     <Compile Include="Interfaces\ICrawlerService.cs" />
+    <Compile Include="Interfaces\IHistoryService.cs" />
     <Compile Include="Interfaces\IPageService.cs" />
     <Compile Include="Interfaces\IRequestService.cs" />
     <Compile Include="Interfaces\ISitemapService.cs" />
     <Compile Include="Interfaces\ISiteSerivice.cs" />
+    <Compile Include="Models\HistoryBL.cs" />
     <Compile Include="Models\PageBL.cs" />
     <Compile Include="Models\SiteBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CrawlerService.cs" />
+    <Compile Include="Services\HistoryService.cs" />
     <Compile Include="Services\PageService.cs" />
     <Compile Include="Services\RequestService.cs" />
     <Compile Include="Services\SitemapService.cs" />

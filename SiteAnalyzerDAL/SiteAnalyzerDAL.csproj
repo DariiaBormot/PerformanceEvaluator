@@ -51,15 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\History.cs" />
     <Compile Include="Entities\Page.cs" />
     <Compile Include="Entities\Site.cs" />
+    <Compile Include="Interfaces\IHistoryRepository.cs" />
     <Compile Include="Interfaces\IPageRepository.cs" />
     <Compile Include="Interfaces\ISiteRepository.cs" />
-    <Compile Include="Migrations\202006180651484_InitialCreate.cs" />
-    <Compile Include="Migrations\202006180651484_InitialCreate.designer.cs">
-      <DependentUpon>202006180651484_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202006190518088_InitialCreate.cs" />
+    <Compile Include="Migrations\202006190518088_InitialCreate.designer.cs">
+      <DependentUpon>202006190518088_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006190813247_UpdatedHistory.cs" />
+    <Compile Include="Migrations\202006190813247_UpdatedHistory.designer.cs">
+      <DependentUpon>202006190813247_UpdatedHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\HistoryRepository.cs" />
     <Compile Include="Repositories\PageRepository.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
     <Compile Include="SiteContext.cs" />
@@ -70,8 +77,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006180651484_InitialCreate.resx">
-      <DependentUpon>202006180651484_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006190518088_InitialCreate.resx">
+      <DependentUpon>202006190518088_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006190813247_UpdatedHistory.resx">
+      <DependentUpon>202006190813247_UpdatedHistory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

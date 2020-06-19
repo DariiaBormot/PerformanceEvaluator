@@ -30,6 +30,7 @@ namespace WebSiteAnalyzerWeb.App_Start
             builder.RegisterType<RequestService>().As<IRequestService>();
             builder.RegisterType<SitemapService>().As<ISitemapService>();
             builder.RegisterType<SiteSerivice>().As<ISiteSerivice>();
+            builder.RegisterType<HistoryService>().As<IHistoryService>();
 
 
             builder.RegisterModule<AutofacConfigBL>();

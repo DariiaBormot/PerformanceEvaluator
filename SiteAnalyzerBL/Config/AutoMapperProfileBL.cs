@@ -15,6 +15,7 @@ namespace SiteAnalyzerBL.Config
         {
             CreateMap<Page, PageBL>().ReverseMap();
             CreateMap<Site, SiteBL>().ReverseMap();
+            CreateMap<History, HistoryBL>().ReverseMap();
         }
     }
 }

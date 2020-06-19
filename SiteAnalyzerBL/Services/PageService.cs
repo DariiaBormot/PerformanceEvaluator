@@ -35,17 +35,16 @@ namespace SiteAnalyzerBL.Services
             return pagesBL;
         }
 
-        public void SavePagesToDB(IEnumerable<PageBL> pages, int siteId) 
+
+        public int GetFastestResponceTime(int siteId)
         {
-            foreach (var page in pages)
-            {
-                if (page != null)
-                {
-                    page.SiteId = siteId;
-                    var pageToCreate = _mapper.Map<Page>(page);
-                    _pageRepository.Create(pageToCreate);
-                }
-            }
+           return _pageRepository.GetFastestResponceTime(siteId);
         }
+
+        public int GetSlowestResponceTime(int siteId)
+        {
+            return _pageRepository.GetSlowestResponceTime(siteId);
+        }
+
     }
 }

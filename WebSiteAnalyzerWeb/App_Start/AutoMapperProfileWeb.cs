@@ -14,6 +14,7 @@ namespace WebSiteAnalyzerWeb.App_Start
         {
             CreateMap<PageBL, WebPageViewModel>().ReverseMap();
             CreateMap<SiteBL, WebSiteViewModel>().ReverseMap();
+            CreateMap<HistoryBL, HistoryViewModel>().ReverseMap();
         }
 
     }

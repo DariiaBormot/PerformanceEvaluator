@@ -13,6 +13,7 @@ namespace SiteAnalyzerBL.Config
             builder.RegisterType<SiteContext>().InstancePerRequest();
             builder.RegisterType<PageRepository>().As<IPageRepository>();
             builder.RegisterType<SiteRepository>().As<ISiteRepository>();
+            builder.RegisterType<HistoryRepository>().As<IHistoryRepository>();
         }
     }
 }

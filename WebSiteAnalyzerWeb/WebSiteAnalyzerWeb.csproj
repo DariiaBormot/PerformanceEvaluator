@@ -158,6 +158,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HistoryViewModel.cs" />
     <Compile Include="Models\WebPageViewModel.cs" />
     <Compile Include="Models\WebSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -305,6 +306,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Analyze.cshtml" />
     <Content Include="Views\Home\_MasterLayout.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
