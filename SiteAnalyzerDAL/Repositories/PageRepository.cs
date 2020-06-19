@@ -25,7 +25,7 @@ namespace SiteAnalyzerDAL.Repositories
         public void Create(Page page)
         {
             _context.Pages.Add(page);
-            _context.SaveChanges();
+             _context.SaveChanges();
         }
 
         public Page Update(Page page) 

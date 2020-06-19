@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace SiteAnalyzerBL.Services
 {
@@ -29,22 +30,22 @@ namespace SiteAnalyzerBL.Services
             try
             {
 
-                Stopwatch stopWatch = new Stopwatch();
+                Stopwatch stopwatch = new Stopwatch();
 
-                stopWatch.Start();
+                stopwatch.Start();
 
-                HttpWebRequest reqest = (HttpWebRequest)WebRequest.Create(page.Path);
+                var reqest = (HttpWebRequest)WebRequest.Create(page.Path);
 
-                HttpWebResponse responce = (HttpWebResponse)reqest.GetResponse();
+                var responce = (HttpWebResponse)reqest.GetResponse();
 
-                stopWatch.Stop();
+                stopwatch.Stop();
 
-                page.ResponseTime = stopWatch.Elapsed.Milliseconds;
+                page.ResponseTime = stopwatch.Elapsed.Milliseconds;
 
                 return page;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }

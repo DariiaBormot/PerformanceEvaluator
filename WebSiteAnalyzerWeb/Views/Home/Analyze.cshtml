@@ -68,7 +68,7 @@
 @if (Model != null)
 {
 
-    @Html.ActionLink("Get History", "History", "Home", new { url = Model.Url }, null) 
+    @Html.ActionLink("Get History", "History", "Home", new { url = Model.Url }, new { @class = "btn btn-primary" }) 
 
 }
 

@@ -7,6 +7,7 @@ using Antlr.Runtime.Misc;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WebSiteAnalyzerWeb.Controllers
 {
@@ -18,6 +19,7 @@ namespace WebSiteAnalyzerWeb.Controllers
         private readonly IRequestService _requestService;
         private readonly IMapper _mapper;
         private readonly IHistoryService _historyService;
+
         public HomeController(ICrawlerService crawlerService,
             ISitemapService sitemapService, IRequestService requestService,
             ISiteSerivice siteService, IMapper mapper, IHistoryService historyService)

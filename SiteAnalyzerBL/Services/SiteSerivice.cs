@@ -4,6 +4,7 @@ using SiteAnalyzerBL.Models;
 using SiteAnalyzerDAL.Entities;
 using SiteAnalyzerDAL.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SiteAnalyzerBL.Services
 {
