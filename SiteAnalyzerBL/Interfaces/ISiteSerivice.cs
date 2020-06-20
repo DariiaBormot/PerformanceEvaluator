@@ -13,5 +13,6 @@ namespace SiteAnalyzerBL.Interfaces
         SiteBL Create(SiteBL site);
         void Update(SiteBL site);
         SiteBL SaveSite(IEnumerable<PageBL> pages, SiteBL siteModel);
+        SiteBL GetSiteById(int id);
     }
 }

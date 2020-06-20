@@ -41,6 +41,12 @@ namespace SiteAnalyzerBL.Services
             _siteRepository.Update(siteToUpdate);
 
         }
+        public SiteBL GetSiteById(int id)
+        {
+            var siteDAL = _siteRepository.GetById(id);
+            var siteBL = _mapper.Map<SiteBL>(siteDAL);
+            return siteBL;
+        }
 
         public SiteBL SaveSite(IEnumerable<PageBL> pages, SiteBL siteModel)
         {

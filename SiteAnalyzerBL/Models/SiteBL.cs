@@ -18,7 +18,7 @@ namespace SiteAnalyzerBL.Models
         public int MinResponseTime { get; set; }
         public int MaxResponseTime { get; set; }
 
-        public virtual ICollection<PageBL> Pages { get; set; }
-        public virtual ICollection<HistoryBL> Histories { get; set; }
+        public virtual IEnumerable<PageBL> Pages { get; set; }
+        public virtual IEnumerable<HistoryBL> Histories { get; set; }
     }
 }

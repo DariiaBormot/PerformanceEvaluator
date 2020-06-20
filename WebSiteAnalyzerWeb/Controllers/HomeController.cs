@@ -3,7 +3,6 @@ using SiteAnalyzerBL.Interfaces;
 using WebSiteAnalyzerWeb.Models;
 using AutoMapper;
 using SiteAnalyzerBL.Models;
-using Antlr.Runtime.Misc;
 using System.Linq;
 using System;
 using System.Collections.Generic;
@@ -55,8 +54,26 @@ namespace WebSiteAnalyzerWeb.Controllers
 
             var sitePL = _mapper.Map<WebSiteViewModel>(site);
 
+            //Chart
+
+            var linksList = site.Pages;
+
+            var speeds = linksList.Select(x => x.ResponseTime).Distinct();
+
+            var repartitions = new List<int>();
+
+            foreach (var item in speeds)
+            {
+                repartitions.Add(linksList.Count(x => x.ResponseTime == item));
+            }
+
+            ViewBag.Speeds = speeds.ToList();
+            ViewBag.Repart = repartitions;
+
+
             return View(sitePL); 
         }
+
 
         [HttpGet]
         public ActionResult History(string url)
