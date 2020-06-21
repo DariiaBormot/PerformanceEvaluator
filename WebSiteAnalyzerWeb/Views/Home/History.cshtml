@@ -4,15 +4,25 @@
     Layout = "_MasterLayout.cshtml";
 }
 
-<table class="table">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="mt-5">History</h2>
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-hover">
     <tr>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.MinResponseTime)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.MaxResponseTime)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Date)
         </th>
 
@@ -25,13 +35,13 @@
         foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.MinResponseTime)
                 </td>
-                <td>
+                <td class="text-center">
                     @Html.DisplayFor(modelItem => item.MaxResponseTime)
                 </td>
-                <td>
+                <td class="text-center">
 
                     @Convert.ToDateTime(item.Date).ToString("dd/MM/yyyy")
 

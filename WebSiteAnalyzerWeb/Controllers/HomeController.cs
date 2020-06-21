@@ -48,7 +48,7 @@ namespace WebSiteAnalyzerWeb.Controllers
 
             var siteModelBL = _mapper.Map<SiteBL>(model);
 
-            var site = _siteSerivice.SaveSite(measuredPages, siteModelBL);
+            var site = _siteSerivice.SaveSiteAndPages(measuredPages, siteModelBL);
 
             _historyService.CreateHistory(site);
 
@@ -56,20 +56,19 @@ namespace WebSiteAnalyzerWeb.Controllers
 
             //Chart
 
-            var linksList = site.Pages;
+            var pagesList = site.Pages;
 
-            var speeds = linksList.Select(x => x.ResponseTime).Distinct();
+            var speedsDistinct = pagesList.Select(x => x.ResponseTime).Distinct();
 
-            var repartitions = new List<int>();
+            var countTime = new List<int>();
 
-            foreach (var item in speeds)
+            foreach (var item in speedsDistinct)
             {
-                repartitions.Add(linksList.Count(x => x.ResponseTime == item));
+                countTime.Add(pagesList.Count(x => x.ResponseTime == item));
             }
 
-            ViewBag.Speeds = speeds.ToList();
-            ViewBag.Repart = repartitions;
-
+            ViewBag.Speeds = speedsDistinct.ToList();
+            ViewBag.Repart = countTime;
 
             return View(sitePL); 
         }

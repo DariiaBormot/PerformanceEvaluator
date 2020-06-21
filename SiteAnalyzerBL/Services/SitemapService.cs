@@ -28,7 +28,7 @@ namespace SiteAnalyzerBL.Services
         {
             var sitemapNodes = new List<string>();
 
-            var host = CheckURL(url);
+            var host = CorrectURL(url);
 
             foreach (var link in relativeLinks)
             {
@@ -42,7 +42,7 @@ namespace SiteAnalyzerBL.Services
             return sitemapNodes;
         }
 
-        private string CheckURL(string url)
+        private string CorrectURL(string url)
         {
             string lastSymbol = url.Substring(url.Length - 1, 1);
 

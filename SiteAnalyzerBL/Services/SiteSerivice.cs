@@ -48,7 +48,7 @@ namespace SiteAnalyzerBL.Services
             return siteBL;
         }
 
-        public SiteBL SaveSite(IEnumerable<PageBL> pages, SiteBL siteModel)
+        public SiteBL SaveSiteAndPages(IEnumerable<PageBL> pages, SiteBL siteModel) 
         {
             var site = Create(siteModel);
 
